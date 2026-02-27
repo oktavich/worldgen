@@ -1,0 +1,3 @@
+/home/ktavi/dev/worldgen/build/CMakeFiles/worldgen.dir
+/home/ktavi/dev/worldgen/build/CMakeFiles/edit_cache.dir
+/home/ktavi/dev/worldgen/build/CMakeFiles/rebuild_cache.dir

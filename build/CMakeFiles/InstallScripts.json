@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/ktavi/dev/worldgen/build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
