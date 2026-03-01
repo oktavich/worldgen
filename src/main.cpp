@@ -38,32 +38,34 @@ int main() {
         return 1;
     }
 
-    // Create app and bind it to the window so callbacks can reach it.
-    App app(win);
-    glfwSetWindowUserPointer(win, &app);
+    {
+        // App lifetime is inside this scope
+        App app(win);
 
-    // Input callbacks forward into App (camera controls)
-    glfwSetMouseButtonCallback(win, &App::glfw_mouse_button_cb);
-    glfwSetCursorPosCallback(win, &App::glfw_cursor_pos_cb);
-    glfwSetScrollCallback(win, &App::glfw_scroll_cb);
+        glfwSetWindowUserPointer(win, &app);
+        glfwSetMouseButtonCallback(win, &App::glfw_mouse_button_cb);
+        glfwSetCursorPosCallback(win, &App::glfw_cursor_pos_cb);
+        glfwSetScrollCallback(win, &App::glfw_scroll_cb);
+        glfwSetKeyCallback(win, &App::glfw_key_cb);
 
-    if (!app.init()) {
-        std::cerr << "App init failed\n";
-        glfwDestroyWindow(win);
-        glfwTerminate();
-        return 1;
+        if (!app.init()) {
+            std::cerr << "App init failed\n";
+            glfwDestroyWindow(win);
+            glfwTerminate();
+            return 1;
+        }
+
+        while (!glfwWindowShouldClose(win)) {
+            glfwPollEvents();
+
+            app.update();
+            app.render();
+
+            glfwSwapBuffers(win);
+        }
+        // <-- App destructor runs HERE (ImGui shutdown still safe)
     }
 
-    while (!glfwWindowShouldClose(win)) {
-        glfwPollEvents();
-
-        app.update();
-        app.render();
-
-        glfwSwapBuffers(win);
-    }
-
-    // App destructor will clean up GL + CPU resources
     glfwDestroyWindow(win);
     glfwTerminate();
     return 0;

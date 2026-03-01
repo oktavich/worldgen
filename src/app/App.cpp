@@ -6,6 +6,10 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include <imgui.h>
+#include <backends/imgui_impl_glfw.h>
+#include <backends/imgui_impl_opengl3.h>
+
 #include "planet/Scale.hpp"
 #include "planet/Lod.hpp"
 #include "planet/Quadtree.hpp"
@@ -75,6 +79,13 @@ App::App(GLFWwindow* window) : m_win(window) {
 }
 
 App::~App() {
+    // ImGui shutdown (only if ImGui was actually initialized)
+    if (ImGui::GetCurrentContext() != nullptr) {
+        ImGui_ImplOpenGL3_Shutdown();
+        ImGui_ImplGlfw_Shutdown();
+        ImGui::DestroyContext();
+    }
+
     for (auto*& r : m_roots) {
         delete_subtree(r);
         r = nullptr;
@@ -84,33 +95,41 @@ App::~App() {
 }
 
 bool App::init() {
-    glEnable(GL_DEPTH_TEST);
-    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    // Renderer owns baseline GL state now
+    m_renderer.init();
+    m_renderer.set_wireframe(m_wireframe);
 
     m_grid = Mesh::build_shared_grid(m_gridN);
 
     for (auto*& r : m_roots) r = new QuadNode{};
 
-    m_lod.radius = planet_radius_m();
-    m_lod.gridN = m_gridN;
-    m_lod.maxLevel = 10;
+    m_lod.radius       = planet_radius_m();
+    m_lod.gridN        = m_gridN;
+    m_lod.maxLevel     = 10;
     m_lod.targetPixels = 2.5f;
     m_lod.mergeFactor  = 0.7f;
     m_lod.boundFactor  = 0.75f;
     m_lod.dMin         = 2.0f;
 
     m_cam.planetRadius = m_lod.radius;
-    m_cam.altitude = 2000.0f;
+    m_cam.altitude     = 2000.0f;
 
     if (!m_prog.build_from_sources(kVertexShaderSrc, kFragmentShaderSrc)) {
         return false;
     }
 
-    m_uMVP    = m_prog.uniform_location("uMVP");
-    m_uFace   = m_prog.uniform_location("uFace");
-    m_uNode   = m_prog.uniform_location("uNode");
-    m_uRadius = m_prog.uniform_location("uRadius");
-    m_uColor  = m_prog.uniform_location("uColor");
+    // Material owns shader + cached uniforms now
+    m_material.shader = &m_prog;
+    m_material.cache_uniforms();
+
+    // ----- ImGui init -----
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+    ImGui::StyleColorsDark();
+
+    ImGui_ImplGlfw_InitForOpenGL(m_win, true);
+    ImGui_ImplOpenGL3_Init("#version 330 core");
+    // ----------------------
 
     return true;
 }
@@ -125,6 +144,20 @@ void App::compute_clip_planes(float altitudeMeters) {
 }
 
 void App::update() {
+    // -------- FPS COUNTER --------
+    double now = glfwGetTime();
+    if (m_fpsLastTime == 0.0) m_fpsLastTime = now;
+
+    m_fpsFrames++;
+    double dt = now - m_fpsLastTime;
+
+    if (dt >= 0.5) {  // update twice per second
+        m_fps = float(double(m_fpsFrames) / dt);
+        m_fpsFrames = 0;
+        m_fpsLastTime = now;
+    }
+    // -----------------------------
+
     int w = 0, h = 0;
     glfwGetFramebufferSize(m_win, &w, &h);
     if (w <= 0 || h <= 0) return;
@@ -146,47 +179,75 @@ void App::render() {
     glfwGetFramebufferSize(m_win, &w, &h);
     if (w <= 0 || h <= 0) return;
 
-    glViewport(0, 0, w, h);
-
     glm::mat4 proj = glm::perspective(m_lod.fovY, float(w) / float(h), m_nearPlane, m_farPlane);
     glm::mat4 view = m_cam.view();
     glm::mat4 mvp  = proj * view;
 
-    glClearColor(0.06f, 0.07f, 0.09f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    m_renderer.begin_frame(w, h, {0.06f, 0.07f, 0.09f, 1.0f});
+    m_renderer.set_wireframe(m_wireframe);
 
-    m_prog.use();
-    glUniformMatrix4fv(m_uMVP, 1, GL_FALSE, glm::value_ptr(mvp));
-    glUniform1f(m_uRadius, m_lod.radius);
-
-    glBindVertexArray(m_grid.vao);
+    m_material.mvp    = mvp;
+    m_material.radius = m_lod.radius;
 
     glm::vec3 camPos = m_cam.position();
     float R = m_lod.radius;
+
+    int totalLeaves = 0;
+    int faceLeaves[6] = {0, 0, 0, 0, 0, 0};
 
     for (int face = 0; face < 6; ++face) {
         std::vector<QuadNode*> leaves;
         leaves.reserve(1024);
         collect_leaves(m_roots[face], leaves);
 
-        glUniform1i(m_uFace, face);
-        glUniform3fv(m_uColor, 1, glm::value_ptr(m_faceColors[face]));
+        faceLeaves[face] = (int)leaves.size();
+        totalLeaves += faceLeaves[face];
+
+        m_material.face  = face;
+        m_material.color = m_faceColors[face];
 
         for (QuadNode* n : leaves) {
             glm::vec3 center = node_center_on_sphere(face, *n, R);
 
-            float theta = node_theta(n->size);
+            float theta      = node_theta(n->size);
             float patchBound = R * theta * m_lod.boundFactor;
 
-            // Conservative horizon cull: keep near-horizon/border patches
             if (!is_patch_visible_from_camera(camPos, center, R, patchBound)) continue;
 
-            glUniform3f(m_uNode, n->x, n->y, n->size);
-            glDrawElements(GL_TRIANGLES, m_grid.indexCount, GL_UNSIGNED_INT, (void*)0);
+            m_material.node = glm::vec3(n->x, n->y, n->size);
+            m_renderer.draw(m_grid, m_material);
         }
     }
 
-    glBindVertexArray(0);
+    // --- ImGui overlay (F2 toggles) ---
+    if (m_showUI) {
+        ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplGlfw_NewFrame();
+        ImGui::NewFrame();
+
+        ImGui::Begin("Worldgen");
+        ImGui::Text("FPS: %.1f", m_fps);
+        ImGui::Text("Altitude: %.1f m", (double)m_cam.altitude);
+        ImGui::Text("Altitude: %.2f km", (double)m_cam.altitude / 1000.0);
+        ImGui::Text("Leaf patches: %d", totalLeaves);
+        ImGui::Text("Face leaves: %d %d %d %d %d %d",
+                    faceLeaves[0], faceLeaves[1], faceLeaves[2],
+                    faceLeaves[3], faceLeaves[4], faceLeaves[5]);
+        
+
+        bool wf = m_wireframe;
+        if (ImGui::Checkbox("Wireframe", &wf)) {
+            m_wireframe = wf;
+            m_renderer.set_wireframe(m_wireframe);
+        }
+
+        ImGui::Text("F1: wireframe");
+        ImGui::Text("F2: UI toggle");
+        ImGui::End();
+
+        ImGui::Render();
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+    }
 }
 
 // -----------------------
@@ -208,4 +269,21 @@ void App::glfw_scroll_cb(GLFWwindow* win, double /*xoff*/, double yoff) {
     auto* app = static_cast<App*>(glfwGetWindowUserPointer(win));
     if (!app) return;
     app->m_cam.on_scroll(yoff);
+}
+
+void App::glfw_key_cb(GLFWwindow* win, int key, int scancode, int action, int mods) {
+    auto* app = static_cast<App*>(glfwGetWindowUserPointer(win));
+    if (!app) return;
+    app->on_key(key, scancode, action, mods);
+}
+
+void App::on_key(int key, int /*scancode*/, int action, int /*mods*/) {
+    if (key == GLFW_KEY_F1 && action == GLFW_PRESS) {
+        m_wireframe = !m_wireframe;
+        m_renderer.set_wireframe(m_wireframe);
+    }
+
+    if (key == GLFW_KEY_F2 && action == GLFW_PRESS) {
+        m_showUI = !m_showUI;
+    }
 }

@@ -51,81 +51,170 @@ build cmake_object_order_depends_target_worldgen: phony || .
 
 build CMakeFiles/worldgen.dir/src/main.cpp.o: CXX_COMPILER__worldgen_unscanned_Debug /home/ktavi/dev/worldgen/src/main.cpp || cmake_object_order_depends_target_worldgen
   CONFIG = Debug
+  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
   DEP_FILE = CMakeFiles/worldgen.dir/src/main.cpp.o.d
   FLAGS = -g -std=gnu++20 -Wall -Wextra -Wpedantic
-  INCLUDES = -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include
+  INCLUDES = -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -I/home/ktavi/dev/worldgen/extern/imgui -I/home/ktavi/dev/worldgen/extern/imgui/backends
   OBJECT_DIR = CMakeFiles/worldgen.dir
   OBJECT_FILE_DIR = CMakeFiles/worldgen.dir/src
   TARGET_SUPPORT_DIR = CMakeFiles/worldgen.dir
 
+build CMakeFiles/worldgen.dir/src/gfx/Renderer.cpp.o: CXX_COMPILER__worldgen_unscanned_Debug /home/ktavi/dev/worldgen/src/gfx/Renderer.cpp || cmake_object_order_depends_target_worldgen
+  CONFIG = Debug
+  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
+  DEP_FILE = CMakeFiles/worldgen.dir/src/gfx/Renderer.cpp.o.d
+  FLAGS = -g -std=gnu++20 -Wall -Wextra -Wpedantic
+  INCLUDES = -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -I/home/ktavi/dev/worldgen/extern/imgui -I/home/ktavi/dev/worldgen/extern/imgui/backends
+  OBJECT_DIR = CMakeFiles/worldgen.dir
+  OBJECT_FILE_DIR = CMakeFiles/worldgen.dir/src/gfx
+  TARGET_SUPPORT_DIR = CMakeFiles/worldgen.dir
+
+build CMakeFiles/worldgen.dir/src/gfx/Material.cpp.o: CXX_COMPILER__worldgen_unscanned_Debug /home/ktavi/dev/worldgen/src/gfx/Material.cpp || cmake_object_order_depends_target_worldgen
+  CONFIG = Debug
+  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
+  DEP_FILE = CMakeFiles/worldgen.dir/src/gfx/Material.cpp.o.d
+  FLAGS = -g -std=gnu++20 -Wall -Wextra -Wpedantic
+  INCLUDES = -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -I/home/ktavi/dev/worldgen/extern/imgui -I/home/ktavi/dev/worldgen/extern/imgui/backends
+  OBJECT_DIR = CMakeFiles/worldgen.dir
+  OBJECT_FILE_DIR = CMakeFiles/worldgen.dir/src/gfx
+  TARGET_SUPPORT_DIR = CMakeFiles/worldgen.dir
+
 build CMakeFiles/worldgen.dir/src/app/App.cpp.o: CXX_COMPILER__worldgen_unscanned_Debug /home/ktavi/dev/worldgen/src/app/App.cpp || cmake_object_order_depends_target_worldgen
   CONFIG = Debug
+  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
   DEP_FILE = CMakeFiles/worldgen.dir/src/app/App.cpp.o.d
   FLAGS = -g -std=gnu++20 -Wall -Wextra -Wpedantic
-  INCLUDES = -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include
+  INCLUDES = -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -I/home/ktavi/dev/worldgen/extern/imgui -I/home/ktavi/dev/worldgen/extern/imgui/backends
   OBJECT_DIR = CMakeFiles/worldgen.dir
   OBJECT_FILE_DIR = CMakeFiles/worldgen.dir/src/app
   TARGET_SUPPORT_DIR = CMakeFiles/worldgen.dir
 
 build CMakeFiles/worldgen.dir/src/gfx/Shader.cpp.o: CXX_COMPILER__worldgen_unscanned_Debug /home/ktavi/dev/worldgen/src/gfx/Shader.cpp || cmake_object_order_depends_target_worldgen
   CONFIG = Debug
+  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
   DEP_FILE = CMakeFiles/worldgen.dir/src/gfx/Shader.cpp.o.d
   FLAGS = -g -std=gnu++20 -Wall -Wextra -Wpedantic
-  INCLUDES = -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include
+  INCLUDES = -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -I/home/ktavi/dev/worldgen/extern/imgui -I/home/ktavi/dev/worldgen/extern/imgui/backends
   OBJECT_DIR = CMakeFiles/worldgen.dir
   OBJECT_FILE_DIR = CMakeFiles/worldgen.dir/src/gfx
   TARGET_SUPPORT_DIR = CMakeFiles/worldgen.dir
 
 build CMakeFiles/worldgen.dir/src/gfx/Mesh.cpp.o: CXX_COMPILER__worldgen_unscanned_Debug /home/ktavi/dev/worldgen/src/gfx/Mesh.cpp || cmake_object_order_depends_target_worldgen
   CONFIG = Debug
+  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
   DEP_FILE = CMakeFiles/worldgen.dir/src/gfx/Mesh.cpp.o.d
   FLAGS = -g -std=gnu++20 -Wall -Wextra -Wpedantic
-  INCLUDES = -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include
+  INCLUDES = -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -I/home/ktavi/dev/worldgen/extern/imgui -I/home/ktavi/dev/worldgen/extern/imgui/backends
   OBJECT_DIR = CMakeFiles/worldgen.dir
   OBJECT_FILE_DIR = CMakeFiles/worldgen.dir/src/gfx
   TARGET_SUPPORT_DIR = CMakeFiles/worldgen.dir
 
 build CMakeFiles/worldgen.dir/src/input/OrbitCamera.cpp.o: CXX_COMPILER__worldgen_unscanned_Debug /home/ktavi/dev/worldgen/src/input/OrbitCamera.cpp || cmake_object_order_depends_target_worldgen
   CONFIG = Debug
+  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
   DEP_FILE = CMakeFiles/worldgen.dir/src/input/OrbitCamera.cpp.o.d
   FLAGS = -g -std=gnu++20 -Wall -Wextra -Wpedantic
-  INCLUDES = -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include
+  INCLUDES = -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -I/home/ktavi/dev/worldgen/extern/imgui -I/home/ktavi/dev/worldgen/extern/imgui/backends
   OBJECT_DIR = CMakeFiles/worldgen.dir
   OBJECT_FILE_DIR = CMakeFiles/worldgen.dir/src/input
   TARGET_SUPPORT_DIR = CMakeFiles/worldgen.dir
 
 build CMakeFiles/worldgen.dir/src/planet/CubeSphere.cpp.o: CXX_COMPILER__worldgen_unscanned_Debug /home/ktavi/dev/worldgen/src/planet/CubeSphere.cpp || cmake_object_order_depends_target_worldgen
   CONFIG = Debug
+  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
   DEP_FILE = CMakeFiles/worldgen.dir/src/planet/CubeSphere.cpp.o.d
   FLAGS = -g -std=gnu++20 -Wall -Wextra -Wpedantic
-  INCLUDES = -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include
+  INCLUDES = -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -I/home/ktavi/dev/worldgen/extern/imgui -I/home/ktavi/dev/worldgen/extern/imgui/backends
   OBJECT_DIR = CMakeFiles/worldgen.dir
   OBJECT_FILE_DIR = CMakeFiles/worldgen.dir/src/planet
   TARGET_SUPPORT_DIR = CMakeFiles/worldgen.dir
 
 build CMakeFiles/worldgen.dir/src/planet/Quadtree.cpp.o: CXX_COMPILER__worldgen_unscanned_Debug /home/ktavi/dev/worldgen/src/planet/Quadtree.cpp || cmake_object_order_depends_target_worldgen
   CONFIG = Debug
+  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
   DEP_FILE = CMakeFiles/worldgen.dir/src/planet/Quadtree.cpp.o.d
   FLAGS = -g -std=gnu++20 -Wall -Wextra -Wpedantic
-  INCLUDES = -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include
+  INCLUDES = -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -I/home/ktavi/dev/worldgen/extern/imgui -I/home/ktavi/dev/worldgen/extern/imgui/backends
   OBJECT_DIR = CMakeFiles/worldgen.dir
   OBJECT_FILE_DIR = CMakeFiles/worldgen.dir/src/planet
   TARGET_SUPPORT_DIR = CMakeFiles/worldgen.dir
 
 build CMakeFiles/worldgen.dir/src/planet/Lod.cpp.o: CXX_COMPILER__worldgen_unscanned_Debug /home/ktavi/dev/worldgen/src/planet/Lod.cpp || cmake_object_order_depends_target_worldgen
   CONFIG = Debug
+  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
   DEP_FILE = CMakeFiles/worldgen.dir/src/planet/Lod.cpp.o.d
   FLAGS = -g -std=gnu++20 -Wall -Wextra -Wpedantic
-  INCLUDES = -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include
+  INCLUDES = -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -I/home/ktavi/dev/worldgen/extern/imgui -I/home/ktavi/dev/worldgen/extern/imgui/backends
   OBJECT_DIR = CMakeFiles/worldgen.dir
   OBJECT_FILE_DIR = CMakeFiles/worldgen.dir/src/planet
   TARGET_SUPPORT_DIR = CMakeFiles/worldgen.dir
 
+build CMakeFiles/worldgen.dir/extern/imgui/imgui.cpp.o: CXX_COMPILER__worldgen_unscanned_Debug /home/ktavi/dev/worldgen/extern/imgui/imgui.cpp || cmake_object_order_depends_target_worldgen
+  CONFIG = Debug
+  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
+  DEP_FILE = CMakeFiles/worldgen.dir/extern/imgui/imgui.cpp.o.d
+  FLAGS = -g -std=gnu++20 -Wall -Wextra -Wpedantic
+  INCLUDES = -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -I/home/ktavi/dev/worldgen/extern/imgui -I/home/ktavi/dev/worldgen/extern/imgui/backends
+  OBJECT_DIR = CMakeFiles/worldgen.dir
+  OBJECT_FILE_DIR = CMakeFiles/worldgen.dir/extern/imgui
+  TARGET_SUPPORT_DIR = CMakeFiles/worldgen.dir
+
+build CMakeFiles/worldgen.dir/extern/imgui/imgui_draw.cpp.o: CXX_COMPILER__worldgen_unscanned_Debug /home/ktavi/dev/worldgen/extern/imgui/imgui_draw.cpp || cmake_object_order_depends_target_worldgen
+  CONFIG = Debug
+  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
+  DEP_FILE = CMakeFiles/worldgen.dir/extern/imgui/imgui_draw.cpp.o.d
+  FLAGS = -g -std=gnu++20 -Wall -Wextra -Wpedantic
+  INCLUDES = -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -I/home/ktavi/dev/worldgen/extern/imgui -I/home/ktavi/dev/worldgen/extern/imgui/backends
+  OBJECT_DIR = CMakeFiles/worldgen.dir
+  OBJECT_FILE_DIR = CMakeFiles/worldgen.dir/extern/imgui
+  TARGET_SUPPORT_DIR = CMakeFiles/worldgen.dir
+
+build CMakeFiles/worldgen.dir/extern/imgui/imgui_tables.cpp.o: CXX_COMPILER__worldgen_unscanned_Debug /home/ktavi/dev/worldgen/extern/imgui/imgui_tables.cpp || cmake_object_order_depends_target_worldgen
+  CONFIG = Debug
+  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
+  DEP_FILE = CMakeFiles/worldgen.dir/extern/imgui/imgui_tables.cpp.o.d
+  FLAGS = -g -std=gnu++20 -Wall -Wextra -Wpedantic
+  INCLUDES = -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -I/home/ktavi/dev/worldgen/extern/imgui -I/home/ktavi/dev/worldgen/extern/imgui/backends
+  OBJECT_DIR = CMakeFiles/worldgen.dir
+  OBJECT_FILE_DIR = CMakeFiles/worldgen.dir/extern/imgui
+  TARGET_SUPPORT_DIR = CMakeFiles/worldgen.dir
+
+build CMakeFiles/worldgen.dir/extern/imgui/imgui_widgets.cpp.o: CXX_COMPILER__worldgen_unscanned_Debug /home/ktavi/dev/worldgen/extern/imgui/imgui_widgets.cpp || cmake_object_order_depends_target_worldgen
+  CONFIG = Debug
+  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
+  DEP_FILE = CMakeFiles/worldgen.dir/extern/imgui/imgui_widgets.cpp.o.d
+  FLAGS = -g -std=gnu++20 -Wall -Wextra -Wpedantic
+  INCLUDES = -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -I/home/ktavi/dev/worldgen/extern/imgui -I/home/ktavi/dev/worldgen/extern/imgui/backends
+  OBJECT_DIR = CMakeFiles/worldgen.dir
+  OBJECT_FILE_DIR = CMakeFiles/worldgen.dir/extern/imgui
+  TARGET_SUPPORT_DIR = CMakeFiles/worldgen.dir
+
+build CMakeFiles/worldgen.dir/extern/imgui/backends/imgui_impl_glfw.cpp.o: CXX_COMPILER__worldgen_unscanned_Debug /home/ktavi/dev/worldgen/extern/imgui/backends/imgui_impl_glfw.cpp || cmake_object_order_depends_target_worldgen
+  CONFIG = Debug
+  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
+  DEP_FILE = CMakeFiles/worldgen.dir/extern/imgui/backends/imgui_impl_glfw.cpp.o.d
+  FLAGS = -g -std=gnu++20 -Wall -Wextra -Wpedantic
+  INCLUDES = -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -I/home/ktavi/dev/worldgen/extern/imgui -I/home/ktavi/dev/worldgen/extern/imgui/backends
+  OBJECT_DIR = CMakeFiles/worldgen.dir
+  OBJECT_FILE_DIR = CMakeFiles/worldgen.dir/extern/imgui/backends
+  TARGET_SUPPORT_DIR = CMakeFiles/worldgen.dir
+
+build CMakeFiles/worldgen.dir/extern/imgui/backends/imgui_impl_opengl3.cpp.o: CXX_COMPILER__worldgen_unscanned_Debug /home/ktavi/dev/worldgen/extern/imgui/backends/imgui_impl_opengl3.cpp || cmake_object_order_depends_target_worldgen
+  CONFIG = Debug
+  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
+  DEP_FILE = CMakeFiles/worldgen.dir/extern/imgui/backends/imgui_impl_opengl3.cpp.o.d
+  FLAGS = -g -std=gnu++20 -Wall -Wextra -Wpedantic
+  INCLUDES = -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -I/home/ktavi/dev/worldgen/extern/imgui -I/home/ktavi/dev/worldgen/extern/imgui/backends
+  OBJECT_DIR = CMakeFiles/worldgen.dir
+  OBJECT_FILE_DIR = CMakeFiles/worldgen.dir/extern/imgui/backends
+  TARGET_SUPPORT_DIR = CMakeFiles/worldgen.dir
+
 build CMakeFiles/worldgen.dir/extern/glad/src/gl.c.o: C_COMPILER__worldgen_unscanned_Debug /home/ktavi/dev/worldgen/extern/glad/src/gl.c || cmake_object_order_depends_target_worldgen
   CONFIG = Debug
+  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
   DEP_FILE = CMakeFiles/worldgen.dir/extern/glad/src/gl.c.o.d
   FLAGS = -g -Wall -Wextra -Wpedantic
-  INCLUDES = -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include
+  INCLUDES = -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -I/home/ktavi/dev/worldgen/extern/imgui -I/home/ktavi/dev/worldgen/extern/imgui/backends
   OBJECT_DIR = CMakeFiles/worldgen.dir
   OBJECT_FILE_DIR = CMakeFiles/worldgen.dir/extern/glad/src
   TARGET_SUPPORT_DIR = CMakeFiles/worldgen.dir
@@ -138,7 +227,7 @@ build CMakeFiles/worldgen.dir/extern/glad/src/gl.c.o: C_COMPILER__worldgen_unsca
 #############################################
 # Link the executable worldgen
 
-build worldgen: CXX_EXECUTABLE_LINKER__worldgen_Debug CMakeFiles/worldgen.dir/src/main.cpp.o CMakeFiles/worldgen.dir/src/app/App.cpp.o CMakeFiles/worldgen.dir/src/gfx/Shader.cpp.o CMakeFiles/worldgen.dir/src/gfx/Mesh.cpp.o CMakeFiles/worldgen.dir/src/input/OrbitCamera.cpp.o CMakeFiles/worldgen.dir/src/planet/CubeSphere.cpp.o CMakeFiles/worldgen.dir/src/planet/Quadtree.cpp.o CMakeFiles/worldgen.dir/src/planet/Lod.cpp.o CMakeFiles/worldgen.dir/extern/glad/src/gl.c.o | /usr/lib/libglfw.so.3.4 /usr/lib/libGLX.so /usr/lib/libOpenGL.so
+build worldgen: CXX_EXECUTABLE_LINKER__worldgen_Debug CMakeFiles/worldgen.dir/src/main.cpp.o CMakeFiles/worldgen.dir/src/gfx/Renderer.cpp.o CMakeFiles/worldgen.dir/src/gfx/Material.cpp.o CMakeFiles/worldgen.dir/src/app/App.cpp.o CMakeFiles/worldgen.dir/src/gfx/Shader.cpp.o CMakeFiles/worldgen.dir/src/gfx/Mesh.cpp.o CMakeFiles/worldgen.dir/src/input/OrbitCamera.cpp.o CMakeFiles/worldgen.dir/src/planet/CubeSphere.cpp.o CMakeFiles/worldgen.dir/src/planet/Quadtree.cpp.o CMakeFiles/worldgen.dir/src/planet/Lod.cpp.o CMakeFiles/worldgen.dir/extern/imgui/imgui.cpp.o CMakeFiles/worldgen.dir/extern/imgui/imgui_draw.cpp.o CMakeFiles/worldgen.dir/extern/imgui/imgui_tables.cpp.o CMakeFiles/worldgen.dir/extern/imgui/imgui_widgets.cpp.o CMakeFiles/worldgen.dir/extern/imgui/backends/imgui_impl_glfw.cpp.o CMakeFiles/worldgen.dir/extern/imgui/backends/imgui_impl_opengl3.cpp.o CMakeFiles/worldgen.dir/extern/glad/src/gl.c.o | /usr/lib/libglfw.so.3.4 /usr/lib/libGLX.so /usr/lib/libOpenGL.so
   CONFIG = Debug
   DEP_FILE = CMakeFiles/worldgen.dir/link.d
   FLAGS = -g

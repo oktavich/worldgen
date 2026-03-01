@@ -16,6 +16,7 @@
 			"find_package",
 			"set_target_properties",
 			"target_compile_options",
+			"target_compile_definitions",
 			"target_include_directories"
 		],
 		"files" : 
@@ -31,19 +32,19 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 7,
+				"line" : 18,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 32,
+				"line" : 46,
 				"parent" : 0
 			},
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 30,
+				"line" : 44,
 				"parent" : 0
 			},
 			{
@@ -65,13 +66,19 @@
 			{
 				"command" : 5,
 				"file" : 0,
-				"line" : 35,
+				"line" : 53,
 				"parent" : 0
 			},
 			{
 				"command" : 6,
 				"file" : 0,
-				"line" : 24,
+				"line" : 50,
+				"parent" : 0
+			},
+			{
+				"command" : 7,
+				"file" : 0,
+				"line" : 35,
 				"parent" : 0
 			}
 		]
@@ -113,15 +120,30 @@
 					"fragment" : "-Wpedantic"
 				}
 			],
-			"includes" : 
+			"defines" : 
 			[
 				{
 					"backtrace" : 8,
+					"define" : "IMGUI_IMPL_OPENGL_LOADER_GLAD"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 9,
 					"path" : "/home/ktavi/dev/worldgen/src"
 				},
 				{
-					"backtrace" : 8,
+					"backtrace" : 9,
 					"path" : "/home/ktavi/dev/worldgen/extern/glad/include"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "/home/ktavi/dev/worldgen/extern/imgui"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "/home/ktavi/dev/worldgen/extern/imgui/backends"
 				}
 			],
 			"language" : "CXX",
@@ -142,7 +164,15 @@
 				4,
 				5,
 				6,
-				7
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15
 			]
 		},
 		{
@@ -164,21 +194,36 @@
 					"fragment" : "-Wpedantic"
 				}
 			],
-			"includes" : 
+			"defines" : 
 			[
 				{
 					"backtrace" : 8,
+					"define" : "IMGUI_IMPL_OPENGL_LOADER_GLAD"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 9,
 					"path" : "/home/ktavi/dev/worldgen/src"
 				},
 				{
-					"backtrace" : 8,
+					"backtrace" : 9,
 					"path" : "/home/ktavi/dev/worldgen/extern/glad/include"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "/home/ktavi/dev/worldgen/extern/imgui"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "/home/ktavi/dev/worldgen/extern/imgui/backends"
 				}
 			],
 			"language" : "C",
 			"sourceIndexes" : 
 			[
-				8
+				16
 			]
 		}
 	],
@@ -241,7 +286,15 @@
 				5,
 				6,
 				7,
-				8
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16
 			]
 		}
 	],
@@ -251,6 +304,18 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "src/main.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/gfx/Renderer.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/gfx/Material.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -293,6 +358,42 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "src/planet/Lod.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "extern/imgui/imgui.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "extern/imgui/imgui_draw.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "extern/imgui/imgui_tables.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "extern/imgui/imgui_widgets.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "extern/imgui/backends/imgui_impl_glfw.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "extern/imgui/backends/imgui_impl_opengl3.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{

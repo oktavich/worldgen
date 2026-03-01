@@ -1,55 +1,103 @@
 [
 {
   "directory": "/home/ktavi/dev/worldgen/build",
-  "command": "/usr/bin/g++ -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles/worldgen.dir/src/main.cpp.o -c /home/ktavi/dev/worldgen/src/main.cpp",
+  "command": "/usr/bin/g++ -DIMGUI_IMPL_OPENGL_LOADER_GLAD -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -I/home/ktavi/dev/worldgen/extern/imgui -I/home/ktavi/dev/worldgen/extern/imgui/backends -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles/worldgen.dir/src/main.cpp.o -c /home/ktavi/dev/worldgen/src/main.cpp",
   "file": "/home/ktavi/dev/worldgen/src/main.cpp",
   "output": "/home/ktavi/dev/worldgen/build/CMakeFiles/worldgen.dir/src/main.cpp.o"
 },
 {
   "directory": "/home/ktavi/dev/worldgen/build",
-  "command": "/usr/bin/g++ -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles/worldgen.dir/src/app/App.cpp.o -c /home/ktavi/dev/worldgen/src/app/App.cpp",
+  "command": "/usr/bin/g++ -DIMGUI_IMPL_OPENGL_LOADER_GLAD -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -I/home/ktavi/dev/worldgen/extern/imgui -I/home/ktavi/dev/worldgen/extern/imgui/backends -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles/worldgen.dir/src/gfx/Renderer.cpp.o -c /home/ktavi/dev/worldgen/src/gfx/Renderer.cpp",
+  "file": "/home/ktavi/dev/worldgen/src/gfx/Renderer.cpp",
+  "output": "/home/ktavi/dev/worldgen/build/CMakeFiles/worldgen.dir/src/gfx/Renderer.cpp.o"
+},
+{
+  "directory": "/home/ktavi/dev/worldgen/build",
+  "command": "/usr/bin/g++ -DIMGUI_IMPL_OPENGL_LOADER_GLAD -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -I/home/ktavi/dev/worldgen/extern/imgui -I/home/ktavi/dev/worldgen/extern/imgui/backends -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles/worldgen.dir/src/gfx/Material.cpp.o -c /home/ktavi/dev/worldgen/src/gfx/Material.cpp",
+  "file": "/home/ktavi/dev/worldgen/src/gfx/Material.cpp",
+  "output": "/home/ktavi/dev/worldgen/build/CMakeFiles/worldgen.dir/src/gfx/Material.cpp.o"
+},
+{
+  "directory": "/home/ktavi/dev/worldgen/build",
+  "command": "/usr/bin/g++ -DIMGUI_IMPL_OPENGL_LOADER_GLAD -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -I/home/ktavi/dev/worldgen/extern/imgui -I/home/ktavi/dev/worldgen/extern/imgui/backends -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles/worldgen.dir/src/app/App.cpp.o -c /home/ktavi/dev/worldgen/src/app/App.cpp",
   "file": "/home/ktavi/dev/worldgen/src/app/App.cpp",
   "output": "/home/ktavi/dev/worldgen/build/CMakeFiles/worldgen.dir/src/app/App.cpp.o"
 },
 {
   "directory": "/home/ktavi/dev/worldgen/build",
-  "command": "/usr/bin/g++ -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles/worldgen.dir/src/gfx/Shader.cpp.o -c /home/ktavi/dev/worldgen/src/gfx/Shader.cpp",
+  "command": "/usr/bin/g++ -DIMGUI_IMPL_OPENGL_LOADER_GLAD -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -I/home/ktavi/dev/worldgen/extern/imgui -I/home/ktavi/dev/worldgen/extern/imgui/backends -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles/worldgen.dir/src/gfx/Shader.cpp.o -c /home/ktavi/dev/worldgen/src/gfx/Shader.cpp",
   "file": "/home/ktavi/dev/worldgen/src/gfx/Shader.cpp",
   "output": "/home/ktavi/dev/worldgen/build/CMakeFiles/worldgen.dir/src/gfx/Shader.cpp.o"
 },
 {
   "directory": "/home/ktavi/dev/worldgen/build",
-  "command": "/usr/bin/g++ -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles/worldgen.dir/src/gfx/Mesh.cpp.o -c /home/ktavi/dev/worldgen/src/gfx/Mesh.cpp",
+  "command": "/usr/bin/g++ -DIMGUI_IMPL_OPENGL_LOADER_GLAD -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -I/home/ktavi/dev/worldgen/extern/imgui -I/home/ktavi/dev/worldgen/extern/imgui/backends -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles/worldgen.dir/src/gfx/Mesh.cpp.o -c /home/ktavi/dev/worldgen/src/gfx/Mesh.cpp",
   "file": "/home/ktavi/dev/worldgen/src/gfx/Mesh.cpp",
   "output": "/home/ktavi/dev/worldgen/build/CMakeFiles/worldgen.dir/src/gfx/Mesh.cpp.o"
 },
 {
   "directory": "/home/ktavi/dev/worldgen/build",
-  "command": "/usr/bin/g++ -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles/worldgen.dir/src/input/OrbitCamera.cpp.o -c /home/ktavi/dev/worldgen/src/input/OrbitCamera.cpp",
+  "command": "/usr/bin/g++ -DIMGUI_IMPL_OPENGL_LOADER_GLAD -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -I/home/ktavi/dev/worldgen/extern/imgui -I/home/ktavi/dev/worldgen/extern/imgui/backends -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles/worldgen.dir/src/input/OrbitCamera.cpp.o -c /home/ktavi/dev/worldgen/src/input/OrbitCamera.cpp",
   "file": "/home/ktavi/dev/worldgen/src/input/OrbitCamera.cpp",
   "output": "/home/ktavi/dev/worldgen/build/CMakeFiles/worldgen.dir/src/input/OrbitCamera.cpp.o"
 },
 {
   "directory": "/home/ktavi/dev/worldgen/build",
-  "command": "/usr/bin/g++ -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles/worldgen.dir/src/planet/CubeSphere.cpp.o -c /home/ktavi/dev/worldgen/src/planet/CubeSphere.cpp",
+  "command": "/usr/bin/g++ -DIMGUI_IMPL_OPENGL_LOADER_GLAD -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -I/home/ktavi/dev/worldgen/extern/imgui -I/home/ktavi/dev/worldgen/extern/imgui/backends -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles/worldgen.dir/src/planet/CubeSphere.cpp.o -c /home/ktavi/dev/worldgen/src/planet/CubeSphere.cpp",
   "file": "/home/ktavi/dev/worldgen/src/planet/CubeSphere.cpp",
   "output": "/home/ktavi/dev/worldgen/build/CMakeFiles/worldgen.dir/src/planet/CubeSphere.cpp.o"
 },
 {
   "directory": "/home/ktavi/dev/worldgen/build",
-  "command": "/usr/bin/g++ -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles/worldgen.dir/src/planet/Quadtree.cpp.o -c /home/ktavi/dev/worldgen/src/planet/Quadtree.cpp",
+  "command": "/usr/bin/g++ -DIMGUI_IMPL_OPENGL_LOADER_GLAD -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -I/home/ktavi/dev/worldgen/extern/imgui -I/home/ktavi/dev/worldgen/extern/imgui/backends -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles/worldgen.dir/src/planet/Quadtree.cpp.o -c /home/ktavi/dev/worldgen/src/planet/Quadtree.cpp",
   "file": "/home/ktavi/dev/worldgen/src/planet/Quadtree.cpp",
   "output": "/home/ktavi/dev/worldgen/build/CMakeFiles/worldgen.dir/src/planet/Quadtree.cpp.o"
 },
 {
   "directory": "/home/ktavi/dev/worldgen/build",
-  "command": "/usr/bin/g++ -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles/worldgen.dir/src/planet/Lod.cpp.o -c /home/ktavi/dev/worldgen/src/planet/Lod.cpp",
+  "command": "/usr/bin/g++ -DIMGUI_IMPL_OPENGL_LOADER_GLAD -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -I/home/ktavi/dev/worldgen/extern/imgui -I/home/ktavi/dev/worldgen/extern/imgui/backends -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles/worldgen.dir/src/planet/Lod.cpp.o -c /home/ktavi/dev/worldgen/src/planet/Lod.cpp",
   "file": "/home/ktavi/dev/worldgen/src/planet/Lod.cpp",
   "output": "/home/ktavi/dev/worldgen/build/CMakeFiles/worldgen.dir/src/planet/Lod.cpp.o"
 },
 {
   "directory": "/home/ktavi/dev/worldgen/build",
-  "command": "/usr/bin/gcc -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -g -Wall -Wextra -Wpedantic -o CMakeFiles/worldgen.dir/extern/glad/src/gl.c.o -c /home/ktavi/dev/worldgen/extern/glad/src/gl.c",
+  "command": "/usr/bin/g++ -DIMGUI_IMPL_OPENGL_LOADER_GLAD -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -I/home/ktavi/dev/worldgen/extern/imgui -I/home/ktavi/dev/worldgen/extern/imgui/backends -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles/worldgen.dir/extern/imgui/imgui.cpp.o -c /home/ktavi/dev/worldgen/extern/imgui/imgui.cpp",
+  "file": "/home/ktavi/dev/worldgen/extern/imgui/imgui.cpp",
+  "output": "/home/ktavi/dev/worldgen/build/CMakeFiles/worldgen.dir/extern/imgui/imgui.cpp.o"
+},
+{
+  "directory": "/home/ktavi/dev/worldgen/build",
+  "command": "/usr/bin/g++ -DIMGUI_IMPL_OPENGL_LOADER_GLAD -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -I/home/ktavi/dev/worldgen/extern/imgui -I/home/ktavi/dev/worldgen/extern/imgui/backends -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles/worldgen.dir/extern/imgui/imgui_draw.cpp.o -c /home/ktavi/dev/worldgen/extern/imgui/imgui_draw.cpp",
+  "file": "/home/ktavi/dev/worldgen/extern/imgui/imgui_draw.cpp",
+  "output": "/home/ktavi/dev/worldgen/build/CMakeFiles/worldgen.dir/extern/imgui/imgui_draw.cpp.o"
+},
+{
+  "directory": "/home/ktavi/dev/worldgen/build",
+  "command": "/usr/bin/g++ -DIMGUI_IMPL_OPENGL_LOADER_GLAD -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -I/home/ktavi/dev/worldgen/extern/imgui -I/home/ktavi/dev/worldgen/extern/imgui/backends -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles/worldgen.dir/extern/imgui/imgui_tables.cpp.o -c /home/ktavi/dev/worldgen/extern/imgui/imgui_tables.cpp",
+  "file": "/home/ktavi/dev/worldgen/extern/imgui/imgui_tables.cpp",
+  "output": "/home/ktavi/dev/worldgen/build/CMakeFiles/worldgen.dir/extern/imgui/imgui_tables.cpp.o"
+},
+{
+  "directory": "/home/ktavi/dev/worldgen/build",
+  "command": "/usr/bin/g++ -DIMGUI_IMPL_OPENGL_LOADER_GLAD -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -I/home/ktavi/dev/worldgen/extern/imgui -I/home/ktavi/dev/worldgen/extern/imgui/backends -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles/worldgen.dir/extern/imgui/imgui_widgets.cpp.o -c /home/ktavi/dev/worldgen/extern/imgui/imgui_widgets.cpp",
+  "file": "/home/ktavi/dev/worldgen/extern/imgui/imgui_widgets.cpp",
+  "output": "/home/ktavi/dev/worldgen/build/CMakeFiles/worldgen.dir/extern/imgui/imgui_widgets.cpp.o"
+},
+{
+  "directory": "/home/ktavi/dev/worldgen/build",
+  "command": "/usr/bin/g++ -DIMGUI_IMPL_OPENGL_LOADER_GLAD -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -I/home/ktavi/dev/worldgen/extern/imgui -I/home/ktavi/dev/worldgen/extern/imgui/backends -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles/worldgen.dir/extern/imgui/backends/imgui_impl_glfw.cpp.o -c /home/ktavi/dev/worldgen/extern/imgui/backends/imgui_impl_glfw.cpp",
+  "file": "/home/ktavi/dev/worldgen/extern/imgui/backends/imgui_impl_glfw.cpp",
+  "output": "/home/ktavi/dev/worldgen/build/CMakeFiles/worldgen.dir/extern/imgui/backends/imgui_impl_glfw.cpp.o"
+},
+{
+  "directory": "/home/ktavi/dev/worldgen/build",
+  "command": "/usr/bin/g++ -DIMGUI_IMPL_OPENGL_LOADER_GLAD -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -I/home/ktavi/dev/worldgen/extern/imgui -I/home/ktavi/dev/worldgen/extern/imgui/backends -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles/worldgen.dir/extern/imgui/backends/imgui_impl_opengl3.cpp.o -c /home/ktavi/dev/worldgen/extern/imgui/backends/imgui_impl_opengl3.cpp",
+  "file": "/home/ktavi/dev/worldgen/extern/imgui/backends/imgui_impl_opengl3.cpp",
+  "output": "/home/ktavi/dev/worldgen/build/CMakeFiles/worldgen.dir/extern/imgui/backends/imgui_impl_opengl3.cpp.o"
+},
+{
+  "directory": "/home/ktavi/dev/worldgen/build",
+  "command": "/usr/bin/gcc -DIMGUI_IMPL_OPENGL_LOADER_GLAD -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -I/home/ktavi/dev/worldgen/extern/imgui -I/home/ktavi/dev/worldgen/extern/imgui/backends -g -Wall -Wextra -Wpedantic -o CMakeFiles/worldgen.dir/extern/glad/src/gl.c.o -c /home/ktavi/dev/worldgen/extern/glad/src/gl.c",
   "file": "/home/ktavi/dev/worldgen/extern/glad/src/gl.c",
   "output": "/home/ktavi/dev/worldgen/build/CMakeFiles/worldgen.dir/extern/glad/src/gl.c.o"
 }
