@@ -22,7 +22,7 @@
 			{
 				"command" : 1,
 				"file" : 1,
-				"line" : 17,
+				"line" : 30,
 				"parent" : 0
 			},
 			{
@@ -32,13 +32,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 728,
+				"line" : 843,
 				"parent" : 2
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 736,
+				"line" : 851,
 				"parent" : 2
 			}
 		]
@@ -48,7 +48,7 @@
 		"major" : 2,
 		"minor" : 9
 	},
-	"id" : "OpenGL::GLX::@6890427a1f51a3e7e1df",
+	"id" : "OpenGL::EGL::@6890427a1f51a3e7e1df",
 	"imported" : true,
 	"interfaceCompileDependencies" : 
 	[
@@ -65,7 +65,7 @@
 		}
 	],
 	"local" : true,
-	"name" : "OpenGL::GLX",
+	"name" : "OpenGL::EGL",
 	"paths" : 
 	{
 		"build" : ".",

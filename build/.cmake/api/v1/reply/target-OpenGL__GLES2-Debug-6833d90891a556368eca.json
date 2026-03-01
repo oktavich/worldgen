@@ -6,8 +6,7 @@
 		"commands" : 
 		[
 			"add_library",
-			"find_package",
-			"set_target_properties"
+			"find_package"
 		],
 		"files" : 
 		[
@@ -22,7 +21,7 @@
 			{
 				"command" : 1,
 				"file" : 1,
-				"line" : 17,
+				"line" : 30,
 				"parent" : 0
 			},
 			{
@@ -32,13 +31,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 861,
-				"parent" : 2
-			},
-			{
-				"command" : 2,
-				"file" : 0,
-				"line" : 869,
+				"line" : 752,
 				"parent" : 2
 			}
 		]
@@ -48,24 +41,10 @@
 		"major" : 2,
 		"minor" : 9
 	},
-	"id" : "OpenGL::GLU::@6890427a1f51a3e7e1df",
+	"id" : "OpenGL::GLES2::@6890427a1f51a3e7e1df",
 	"imported" : true,
-	"interfaceCompileDependencies" : 
-	[
-		{
-			"backtrace" : 4,
-			"id" : "OpenGL::GL::@6890427a1f51a3e7e1df"
-		}
-	],
-	"interfaceLinkLibraries" : 
-	[
-		{
-			"backtrace" : 4,
-			"id" : "OpenGL::GL::@6890427a1f51a3e7e1df"
-		}
-	],
 	"local" : true,
-	"name" : "OpenGL::GLU",
+	"name" : "OpenGL::GLES2",
 	"paths" : 
 	{
 		"build" : ".",

@@ -53,16 +53,79 @@ build CMakeFiles/worldgen.dir/src/main.cpp.o: CXX_COMPILER__worldgen_unscanned_D
   CONFIG = Debug
   DEP_FILE = CMakeFiles/worldgen.dir/src/main.cpp.o.d
   FLAGS = -g -std=gnu++20 -Wall -Wextra -Wpedantic
-  INCLUDES = -I/home/ktavi/dev/worldgen/extern/glad/include
+  INCLUDES = -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include
   OBJECT_DIR = CMakeFiles/worldgen.dir
   OBJECT_FILE_DIR = CMakeFiles/worldgen.dir/src
+  TARGET_SUPPORT_DIR = CMakeFiles/worldgen.dir
+
+build CMakeFiles/worldgen.dir/src/app/App.cpp.o: CXX_COMPILER__worldgen_unscanned_Debug /home/ktavi/dev/worldgen/src/app/App.cpp || cmake_object_order_depends_target_worldgen
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/worldgen.dir/src/app/App.cpp.o.d
+  FLAGS = -g -std=gnu++20 -Wall -Wextra -Wpedantic
+  INCLUDES = -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include
+  OBJECT_DIR = CMakeFiles/worldgen.dir
+  OBJECT_FILE_DIR = CMakeFiles/worldgen.dir/src/app
+  TARGET_SUPPORT_DIR = CMakeFiles/worldgen.dir
+
+build CMakeFiles/worldgen.dir/src/gfx/Shader.cpp.o: CXX_COMPILER__worldgen_unscanned_Debug /home/ktavi/dev/worldgen/src/gfx/Shader.cpp || cmake_object_order_depends_target_worldgen
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/worldgen.dir/src/gfx/Shader.cpp.o.d
+  FLAGS = -g -std=gnu++20 -Wall -Wextra -Wpedantic
+  INCLUDES = -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include
+  OBJECT_DIR = CMakeFiles/worldgen.dir
+  OBJECT_FILE_DIR = CMakeFiles/worldgen.dir/src/gfx
+  TARGET_SUPPORT_DIR = CMakeFiles/worldgen.dir
+
+build CMakeFiles/worldgen.dir/src/gfx/Mesh.cpp.o: CXX_COMPILER__worldgen_unscanned_Debug /home/ktavi/dev/worldgen/src/gfx/Mesh.cpp || cmake_object_order_depends_target_worldgen
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/worldgen.dir/src/gfx/Mesh.cpp.o.d
+  FLAGS = -g -std=gnu++20 -Wall -Wextra -Wpedantic
+  INCLUDES = -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include
+  OBJECT_DIR = CMakeFiles/worldgen.dir
+  OBJECT_FILE_DIR = CMakeFiles/worldgen.dir/src/gfx
+  TARGET_SUPPORT_DIR = CMakeFiles/worldgen.dir
+
+build CMakeFiles/worldgen.dir/src/input/OrbitCamera.cpp.o: CXX_COMPILER__worldgen_unscanned_Debug /home/ktavi/dev/worldgen/src/input/OrbitCamera.cpp || cmake_object_order_depends_target_worldgen
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/worldgen.dir/src/input/OrbitCamera.cpp.o.d
+  FLAGS = -g -std=gnu++20 -Wall -Wextra -Wpedantic
+  INCLUDES = -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include
+  OBJECT_DIR = CMakeFiles/worldgen.dir
+  OBJECT_FILE_DIR = CMakeFiles/worldgen.dir/src/input
+  TARGET_SUPPORT_DIR = CMakeFiles/worldgen.dir
+
+build CMakeFiles/worldgen.dir/src/planet/CubeSphere.cpp.o: CXX_COMPILER__worldgen_unscanned_Debug /home/ktavi/dev/worldgen/src/planet/CubeSphere.cpp || cmake_object_order_depends_target_worldgen
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/worldgen.dir/src/planet/CubeSphere.cpp.o.d
+  FLAGS = -g -std=gnu++20 -Wall -Wextra -Wpedantic
+  INCLUDES = -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include
+  OBJECT_DIR = CMakeFiles/worldgen.dir
+  OBJECT_FILE_DIR = CMakeFiles/worldgen.dir/src/planet
+  TARGET_SUPPORT_DIR = CMakeFiles/worldgen.dir
+
+build CMakeFiles/worldgen.dir/src/planet/Quadtree.cpp.o: CXX_COMPILER__worldgen_unscanned_Debug /home/ktavi/dev/worldgen/src/planet/Quadtree.cpp || cmake_object_order_depends_target_worldgen
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/worldgen.dir/src/planet/Quadtree.cpp.o.d
+  FLAGS = -g -std=gnu++20 -Wall -Wextra -Wpedantic
+  INCLUDES = -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include
+  OBJECT_DIR = CMakeFiles/worldgen.dir
+  OBJECT_FILE_DIR = CMakeFiles/worldgen.dir/src/planet
+  TARGET_SUPPORT_DIR = CMakeFiles/worldgen.dir
+
+build CMakeFiles/worldgen.dir/src/planet/Lod.cpp.o: CXX_COMPILER__worldgen_unscanned_Debug /home/ktavi/dev/worldgen/src/planet/Lod.cpp || cmake_object_order_depends_target_worldgen
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/worldgen.dir/src/planet/Lod.cpp.o.d
+  FLAGS = -g -std=gnu++20 -Wall -Wextra -Wpedantic
+  INCLUDES = -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include
+  OBJECT_DIR = CMakeFiles/worldgen.dir
+  OBJECT_FILE_DIR = CMakeFiles/worldgen.dir/src/planet
   TARGET_SUPPORT_DIR = CMakeFiles/worldgen.dir
 
 build CMakeFiles/worldgen.dir/extern/glad/src/gl.c.o: C_COMPILER__worldgen_unscanned_Debug /home/ktavi/dev/worldgen/extern/glad/src/gl.c || cmake_object_order_depends_target_worldgen
   CONFIG = Debug
   DEP_FILE = CMakeFiles/worldgen.dir/extern/glad/src/gl.c.o.d
   FLAGS = -g -Wall -Wextra -Wpedantic
-  INCLUDES = -I/home/ktavi/dev/worldgen/extern/glad/include
+  INCLUDES = -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include
   OBJECT_DIR = CMakeFiles/worldgen.dir
   OBJECT_FILE_DIR = CMakeFiles/worldgen.dir/extern/glad/src
   TARGET_SUPPORT_DIR = CMakeFiles/worldgen.dir
@@ -75,7 +138,7 @@ build CMakeFiles/worldgen.dir/extern/glad/src/gl.c.o: C_COMPILER__worldgen_unsca
 #############################################
 # Link the executable worldgen
 
-build worldgen: CXX_EXECUTABLE_LINKER__worldgen_Debug CMakeFiles/worldgen.dir/src/main.cpp.o CMakeFiles/worldgen.dir/extern/glad/src/gl.c.o | /usr/lib/libglfw.so.3.4 /usr/lib/libGLX.so /usr/lib/libOpenGL.so
+build worldgen: CXX_EXECUTABLE_LINKER__worldgen_Debug CMakeFiles/worldgen.dir/src/main.cpp.o CMakeFiles/worldgen.dir/src/app/App.cpp.o CMakeFiles/worldgen.dir/src/gfx/Shader.cpp.o CMakeFiles/worldgen.dir/src/gfx/Mesh.cpp.o CMakeFiles/worldgen.dir/src/input/OrbitCamera.cpp.o CMakeFiles/worldgen.dir/src/planet/CubeSphere.cpp.o CMakeFiles/worldgen.dir/src/planet/Quadtree.cpp.o CMakeFiles/worldgen.dir/src/planet/Lod.cpp.o CMakeFiles/worldgen.dir/extern/glad/src/gl.c.o | /usr/lib/libglfw.so.3.4 /usr/lib/libGLX.so /usr/lib/libOpenGL.so
   CONFIG = Debug
   DEP_FILE = CMakeFiles/worldgen.dir/link.d
   FLAGS = -g

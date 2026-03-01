@@ -1,4 +1,17 @@
 # ninja log v7
-2	64	1772363741720765933	CMakeFiles/worldgen.dir/extern/glad/src/gl.c.o	d37667454ec5923
-1	431	1772363741719765906	CMakeFiles/worldgen.dir/src/main.cpp.o	6e120ce18d8b030
-431	466	1772363742149777405	worldgen	608a22f7070681f7
+3	66	1772382435565809347	CMakeFiles/worldgen.dir/extern/glad/src/gl.c.o	2bf774e5c534871e
+2	432	1772382435563635553	CMakeFiles/worldgen.dir/src/main.cpp.o	81b73517563bedba
+544	585	1772382436106313440	worldgen	54751a9a54595c6e
+2	150	1772382435565528382	CMakeFiles/worldgen.dir/src/planet/Quadtree.cpp.o	cb2c5252d8dde33e
+2	313	1772382435565411239	CMakeFiles/worldgen.dir/src/planet/CubeSphere.cpp.o	151203b5589c9919
+2	270	1772382435565103473	CMakeFiles/worldgen.dir/src/gfx/Shader.cpp.o	3e5c257037db69b
+2	333	1772382435565302993	CMakeFiles/worldgen.dir/src/input/OrbitCamera.cpp.o	edf595eea60c0683
+2	366	1772382435565205858	CMakeFiles/worldgen.dir/src/gfx/Mesh.cpp.o	9a3a05964aa206a8
+2	544	1772382435565004124	CMakeFiles/worldgen.dir/src/app/App.cpp.o	855f96723a603b2c
+3	365	1772382435565672546	CMakeFiles/worldgen.dir/src/planet/Lod.cpp.o	a115279e0f4682c5
+1	3	1772382435558635431	clean	7adf74806070bde8
+1	348	1772383007328646063	CMakeFiles/worldgen.dir/src/planet/Lod.cpp.o	a115279e0f4682c5
+348	391	1772383007676312390	worldgen	54751a9a54595c6e
+1	333	1772383615039608669	CMakeFiles/worldgen.dir/src/planet/Lod.cpp.o	a115279e0f4682c5
+1	472	1772383615038608644	CMakeFiles/worldgen.dir/src/app/App.cpp.o	855f96723a603b2c
+472	514	1772383615510038531	worldgen	54751a9a54595c6e

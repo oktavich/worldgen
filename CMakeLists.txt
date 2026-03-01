@@ -6,10 +6,23 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(worldgen
   src/main.cpp
+
+  src/app/App.cpp
+
+  src/gfx/Shader.cpp
+  src/gfx/Mesh.cpp
+
+  src/input/OrbitCamera.cpp
+
+  src/planet/CubeSphere.cpp
+  src/planet/Quadtree.cpp
+  src/planet/Lod.cpp
+
   extern/glad/src/gl.c
 )
 
 target_include_directories(worldgen PRIVATE
+  src
   extern/glad/include
 )
 

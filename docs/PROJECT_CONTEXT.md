@@ -28,7 +28,8 @@ Add Dear ImGui now for toggles and live numbers (FPS, patch counts, LOD levels, 
 Deliverable: press a key to open a UI panel and toggle wireframe + show FPS.
 
 2 - Planet patches: “fixed grid mesh + reuse indices”
-
+Implement the correct world scale, world units 1 unit = 1 meter
+Adjust the subdivision metrics if needed
 Terrain LOD gets much easier if every patch is the same topology:
 Patch resolution 65×65 verts.
 Prebuild index buffers per LOD (or per stitch pattern if you go fancy).
