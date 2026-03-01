@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/home/ktavi/dev/worldgen/build",
+  "command": "/usr/bin/g++ -I/home/ktavi/dev/worldgen/extern/glad/include -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles/worldgen.dir/src/main.cpp.o -c /home/ktavi/dev/worldgen/src/main.cpp",
+  "file": "/home/ktavi/dev/worldgen/src/main.cpp",
+  "output": "/home/ktavi/dev/worldgen/build/CMakeFiles/worldgen.dir/src/main.cpp.o"
+},
+{
+  "directory": "/home/ktavi/dev/worldgen/build",
+  "command": "/usr/bin/gcc -I/home/ktavi/dev/worldgen/extern/glad/include -g -Wall -Wextra -Wpedantic -o CMakeFiles/worldgen.dir/extern/glad/src/gl.c.o -c /home/ktavi/dev/worldgen/extern/glad/src/gl.c",
+  "file": "/home/ktavi/dev/worldgen/extern/glad/src/gl.c",
+  "output": "/home/ktavi/dev/worldgen/build/CMakeFiles/worldgen.dir/extern/glad/src/gl.c.o"
+}
+]
