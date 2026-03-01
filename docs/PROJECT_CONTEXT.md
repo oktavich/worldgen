@@ -9,12 +9,8 @@ Generate a spherical (~60km circumference, icospohere or cubesphere),(similar to
 Later Goals:
 add trees, mountains, bodies of water, vegetation, other 3d low poly assets that can be added thru the generation algorithm. Day and Night cycle, weather, phisics. Consider future scalability: like chopping the trees and digging the ground (SDF engine) and ability to save the changes. Plan is to evolve it in to a game engine.
 
-RoadMap:
-0 - Cube-sphere + per-face quadtree LOD 
-6 cube faces → project to sphere (“cube-sphere”).
-Each face is a quadtree of patches; split/merge based on camera distance.
-This is a very common approach for planetary terrain LOD and has lots of prior art + open repos to study.
-Deliverable for this phase: a wireframe cube-sphere made of 6 patches (no noise), stable camera orbit.
+RoadMap: 0 (COMPLETED) - Cube-sphere + per-face quadtree LOD 6 cube faces → project to sphere (“cube-sphere”). Each face is a quadtree of patches; split/merge based on camera distance. This is a very common approach for planetary terrain LOD and has lots of prior art + open repos to study. Deliverable for this phase: a wireframe cube-sphere made of 6 patches (no noise), stable camera orbit.
+Extra stuff added/fixed: code refactor, split main.cpp in to multiple files, fixed an issue where all planet subdivides when zoomed in on a cube face. Transition between faces still need attention.
 
 1 - Make your rendering “engine-shaped” (minimal but scalable)
 Before terrain explodes your complexity, lay a thin foundation:
