@@ -7,7 +7,8 @@
 		[
 			"add_library",
 			"find_package",
-			"set_target_properties"
+			"set_target_properties",
+			"set_property"
 		],
 		"files" : 
 		[
@@ -22,7 +23,7 @@
 			{
 				"command" : 1,
 				"file" : 1,
-				"line" : 44,
+				"line" : 45,
 				"parent" : 0
 			},
 			{
@@ -32,13 +33,19 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 728,
+				"line" : 828,
 				"parent" : 2
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 736,
+				"line" : 829,
+				"parent" : 2
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 831,
 				"parent" : 2
 			}
 		]
@@ -48,13 +55,17 @@
 		"major" : 2,
 		"minor" : 9
 	},
-	"id" : "OpenGL::GLX::@6890427a1f51a3e7e1df",
+	"id" : "OpenGL::GL::@6890427a1f51a3e7e1df",
 	"imported" : true,
 	"interfaceCompileDependencies" : 
 	[
 		{
 			"backtrace" : 4,
 			"id" : "OpenGL::OpenGL::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 5,
+			"id" : "OpenGL::GLX::@6890427a1f51a3e7e1df"
 		}
 	],
 	"interfaceLinkLibraries" : 
@@ -62,15 +73,19 @@
 		{
 			"backtrace" : 4,
 			"id" : "OpenGL::OpenGL::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 5,
+			"id" : "OpenGL::GLX::@6890427a1f51a3e7e1df"
 		}
 	],
 	"local" : true,
-	"name" : "OpenGL::GLX",
+	"name" : "OpenGL::GL",
 	"paths" : 
 	{
 		"build" : ".",
 		"source" : "."
 	},
 	"sources" : [],
-	"type" : "UNKNOWN_LIBRARY"
+	"type" : "INTERFACE_LIBRARY"
 }

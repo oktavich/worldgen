@@ -23,15 +23,20 @@ void Renderer::begin_frame(int width, int height, const glm::vec4& clearColor) {
 
 void Renderer::draw(const Mesh& mesh, const Material& mat) {
     if (!mat.shader) return;
-    if (!mat.loc.valid()) return; // or assert/log if you prefer
+    if (!mat.loc.valid()) return;
 
     mat.shader->use();
 
+    // Always required
     glUniformMatrix4fv(mat.loc.uMVP, 1, GL_FALSE, glm::value_ptr(mat.mvp));
-    glUniform1i(mat.loc.uFace, mat.face);
-    glUniform3fv(mat.loc.uNode, 1, glm::value_ptr(mat.node));
-    glUniform1f(mat.loc.uRadius, mat.radius);
-    glUniform3fv(mat.loc.uColor, 1, glm::value_ptr(mat.color));
+
+    // Optional (old grid+uniform path)
+    if (mat.loc.uFace   != -1) glUniform1i(mat.loc.uFace, mat.face);
+    if (mat.loc.uNode   != -1) glUniform3fv(mat.loc.uNode, 1, glm::value_ptr(mat.node));
+    if (mat.loc.uRadius != -1) glUniform1f(mat.loc.uRadius, mat.radius);
+
+    // Always used
+    if (mat.loc.uColor  != -1) glUniform3fv(mat.loc.uColor, 1, glm::value_ptr(mat.color));
 
     glBindVertexArray(mesh.vao);
     glDrawElements(GL_TRIANGLES, mesh.indexCount, GL_UNSIGNED_INT, (void*)0);

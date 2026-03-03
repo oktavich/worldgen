@@ -15,7 +15,7 @@ struct MaterialUniforms {
 
     bool valid() const {
         // only require what you actually use; all five are used in your current shader
-        return uMVP != -1 && uFace != -1 && uNode != -1 && uRadius != -1 && uColor != -1;
+        return uMVP != -1 && uColor != -1;
     }
 };
 

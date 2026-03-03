@@ -2,9 +2,12 @@
 
 #include <algorithm>
 #include <numbers>
+#include <cstdint>
+#include <vector>
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <glm/common.hpp> // glm::clamp
 
 #include <imgui.h>
 #include <backends/imgui_impl_glfw.h>
@@ -14,43 +17,30 @@
 #include "planet/Lod.hpp"
 #include "planet/Quadtree.hpp"
 #include "planet/CubeSphere.hpp"
+#include "planet/PatchBuilder.hpp"
+#include "gfx/Vertex.hpp"
 
-static const char* kVertexShaderSrc = R"(
+static const char* kVertexShaderPNSrc = R"(
 #version 330 core
-layout(location = 0) in vec2 aST;   // [0,1]x[0,1] grid
+layout(location = 0) in vec3 aPos;
+layout(location = 1) in vec3 aNrm;
 
-uniform mat4  uMVP;
-uniform int   uFace;   // 0..5
-uniform vec3  uNode;   // x,y,size in [0,1]
-uniform float uRadius; // meters
-
-vec3 cubeFacePoint(int face, float u, float v) {
-    // u,v in [-1,1]
-    if (face == 0) return vec3(+1.0, v,     -u);    // +X
-    if (face == 1) return vec3(-1.0, v,     +u);    // -X
-    if (face == 2) return vec3(u,     +1.0, -v);    // +Y
-    if (face == 3) return vec3(u,     -1.0, +v);    // -Y
-    if (face == 4) return vec3(u,     v,     +1.0); // +Z
-    return            vec3(-u,    v,     -1.0);      // -Z
-}
+uniform mat4 uMVP;
 
 void main() {
-    vec2 uv01 = uNode.xy + aST * uNode.z;   // [0,1] within node
-    float u = uv01.x * 2.0 - 1.0;           // [-1,1]
-    float v = uv01.y * 2.0 - 1.0;
-
-    vec3 cube = cubeFacePoint(uFace, u, v);
-    vec3 sphere = normalize(cube) * uRadius;
-
-    gl_Position = uMVP * vec4(sphere, 1.0);
+    gl_Position = uMVP * vec4(aPos, 1.0);
 }
 )";
 
-static const char* kFragmentShaderSrc = R"(
+static const char* kFragmentShaderPNSrc = R"(
 #version 330 core
 out vec4 FragColor;
+
 uniform vec3 uColor;
-void main() { FragColor = vec4(uColor, 1.0); }
+
+void main() {
+    FragColor = vec4(uColor, 1.0);
+}
 )";
 
 // Conservative horizon test with patch bound.
@@ -65,6 +55,21 @@ static bool is_patch_visible_from_camera(const glm::vec3& camPos,
 static float node_theta(float nodeSize01) {
     // cube face spans pi/2 radians; node spans (pi/2)*size
     return (std::numbers::pi_v<float> * 0.5f) * nodeSize01;
+}
+
+static uint64_t patch_key(int face, const QuadNode& n) {
+    // x,y are multiples of size = 1 / (2^level)
+    const int dim = 1 << n.level;
+    const int ix = (int)glm::clamp(int(n.x * dim + 0.5f), 0, dim - 1);
+    const int iy = (int)glm::clamp(int(n.y * dim + 0.5f), 0, dim - 1);
+
+    // pack: face(3) | level(6) | ix(20) | iy(20)
+    uint64_t k = 0;
+    k |= (uint64_t(face) & 0x7ull) << 46;
+    k |= (uint64_t(n.level) & 0x3Full) << 40;
+    k |= (uint64_t(ix) & 0xFFFFFull) << 20;
+    k |= (uint64_t(iy) & 0xFFFFFull);
+    return k;
 }
 
 App::App(GLFWwindow* window) : m_win(window) {
@@ -90,6 +95,13 @@ App::~App() {
         delete_subtree(r);
         r = nullptr;
     }
+
+    // Destroy cached patch meshes (they do NOT own IBO, but they do own VAO/VBO)
+    for (auto& kv : m_patchCache) {
+        kv.second.destroy();
+    }
+    m_patchCache.clear();
+
     m_grid.destroy();
     m_prog.destroy();
 }
@@ -114,7 +126,7 @@ bool App::init() {
     m_cam.planetRadius = m_lod.radius;
     m_cam.altitude     = 2000.0f;
 
-    if (!m_prog.build_from_sources(kVertexShaderSrc, kFragmentShaderSrc)) {
+    if (!m_prog.build_from_sources(kVertexShaderPNSrc, kFragmentShaderPNSrc)) {
         return false;
     }
 
@@ -186,8 +198,7 @@ void App::render() {
     m_renderer.begin_frame(w, h, {0.06f, 0.07f, 0.09f, 1.0f});
     m_renderer.set_wireframe(m_wireframe);
 
-    m_material.mvp    = mvp;
-    m_material.radius = m_lod.radius;
+    m_material.mvp = mvp;
 
     glm::vec3 camPos = m_cam.position();
     float R = m_lod.radius;
@@ -203,7 +214,6 @@ void App::render() {
         faceLeaves[face] = (int)leaves.size();
         totalLeaves += faceLeaves[face];
 
-        m_material.face  = face;
         m_material.color = m_faceColors[face];
 
         for (QuadNode* n : leaves) {
@@ -214,10 +224,20 @@ void App::render() {
 
             if (!is_patch_visible_from_camera(camPos, center, R, patchBound)) continue;
 
-            m_material.node = glm::vec3(n->x, n->y, n->size);
-            m_renderer.draw(m_grid, m_material);
+            const uint64_t key = patch_key(face, *n);
+
+            auto it = m_patchCache.find(key);
+            if (it == m_patchCache.end()) {
+                std::vector<VertexPN> verts;
+                PatchBuilder::build_patch(face, *n, m_gridN, m_lod.radius, verts);
+
+                Mesh patch = Mesh::build_patch_pn(verts, m_grid);
+                it = m_patchCache.emplace(key, std::move(patch)).first;
+            }
+
+            m_renderer.draw(it->second, m_material);
         }
-    }
+    } // ✅ closes face loop
 
     // --- ImGui overlay (F2 toggles) ---
     if (m_showUI) {
@@ -233,7 +253,6 @@ void App::render() {
         ImGui::Text("Face leaves: %d %d %d %d %d %d",
                     faceLeaves[0], faceLeaves[1], faceLeaves[2],
                     faceLeaves[3], faceLeaves[4], faceLeaves[5]);
-        
 
         bool wf = m_wireframe;
         if (ImGui::Checkbox("Wireframe", &wf)) {
@@ -248,7 +267,7 @@ void App::render() {
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
     }
-}
+} // ✅ closes render()
 
 // -----------------------
 // GLFW callback trampolines

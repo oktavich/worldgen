@@ -10,7 +10,7 @@ Later Goals:
 add trees, mountains, bodies of water, vegetation, other 3d low poly assets that can be added thru the generation algorithm. Day and Night cycle, weather, phisics. Consider future scalability: like chopping the trees and digging the ground (SDF engine) and ability to save the changes. Plan is to evolve it in to a game engine.
 
 RoadMap: 0 (COMPLETED) - Cube-sphere + per-face quadtree LOD 6 cube faces → project to sphere (“cube-sphere”). Each face is a quadtree of patches; split/merge based on camera distance. This is a very common approach for planetary terrain LOD and has lots of prior art + open repos to study. Deliverable for this phase: a wireframe cube-sphere made of 6 patches (no noise), stable camera orbit.
-Extra stuff: added/fixed: code refactor, split main.cpp in to multiple files, fixed an issue where all planet subdivides when zoomed in on a cube face. Transition between faces still need attention.
+Progress: added/fixed: code refactor, split main.cpp in to multiple files, fixed an issue where all planet subdivides when zoomed in on a cube face. Transition between faces still need attention.
 
 1 - Make your rendering “engine-shaped” (minimal but scalable)
 Before terrain explodes your complexity, lay a thin foundation:
@@ -22,7 +22,7 @@ Basic material struct (shader + uniforms)
 B. Debug UI (saves weeks)
 Add Dear ImGui now for toggles and live numbers (FPS, patch counts, LOD levels, wireframe, etc.).
 Deliverable: press a key to open a UI panel and toggle wireframe + show FPS.
-Extra stuff:moved from App → raw OpenGL calls everywhere to App → Renderer → Material → Shader → OpenGL
+Progress:moved from App → raw OpenGL calls everywhere to App → Renderer → Material → Shader → OpenGL
 pulled imgui as submodule
 F1 now toggles wireframe 
 F2 bring imgui with fps counter, altitude in m and km, leaf patches, face leaves
@@ -42,6 +42,12 @@ Convert to cube face position
 Project to sphere
 Apply height displacement (later)
 Deliverable: a planet made of a few patches, correct projection, no cracks, stable.
+Progress: Patch Resolution = 65×65, CPU Patch Generation (PatchBuilder), Vertex Format Upgraded, Shared Index Buffer, New Shader Path (PN Shader), Patch Cache System.
+Minor Things Still Optional (But Not Required)
+Leter optionally todo:
+Remove old aST shader code
+Remove uFace/uNode entirely from Material struct
+Split shared grid indices into its own object
 
 3 - Add LOD with crack handling (do the simple crack fix first)
 LOD selection

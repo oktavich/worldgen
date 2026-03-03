@@ -5,6 +5,8 @@
 #include <glad/gl.h>
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
+#include <unordered_map>
+#include <cstdint>
 #include "gfx/Renderer.hpp"
 #include "gfx/Material.hpp"
 #include "gfx/Shader.hpp"
@@ -34,6 +36,7 @@ private:
 
     ShaderProgram m_prog{};
     Mesh m_grid{};
+    std::unordered_map<uint64_t, Mesh> m_patchCache{};
     Renderer m_renderer{};
     Material m_material{};
     bool m_wireframe = true;
@@ -49,7 +52,7 @@ private:
     float m_farPlane  = 1000.0f;
 
     // Render constants
-    int m_gridN = 33;
+    int m_gridN = 65;
 
     std::array<glm::vec3, 6> m_faceColors{};
 

@@ -26,6 +26,7 @@ add_executable(worldgen
   src/planet/CubeSphere.cpp
   src/planet/Quadtree.cpp
   src/planet/Lod.cpp
+  src/planet/PatchBuilder.cpp
 
   ${IMGUI_SOURCES}
 

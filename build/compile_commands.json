@@ -61,6 +61,12 @@
 },
 {
   "directory": "/home/ktavi/dev/worldgen/build",
+  "command": "/usr/bin/g++ -DIMGUI_IMPL_OPENGL_LOADER_GLAD -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -I/home/ktavi/dev/worldgen/extern/imgui -I/home/ktavi/dev/worldgen/extern/imgui/backends -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles/worldgen.dir/src/planet/PatchBuilder.cpp.o -c /home/ktavi/dev/worldgen/src/planet/PatchBuilder.cpp",
+  "file": "/home/ktavi/dev/worldgen/src/planet/PatchBuilder.cpp",
+  "output": "/home/ktavi/dev/worldgen/build/CMakeFiles/worldgen.dir/src/planet/PatchBuilder.cpp.o"
+},
+{
+  "directory": "/home/ktavi/dev/worldgen/build",
   "command": "/usr/bin/g++ -DIMGUI_IMPL_OPENGL_LOADER_GLAD -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -I/home/ktavi/dev/worldgen/extern/imgui -I/home/ktavi/dev/worldgen/extern/imgui/backends -g -std=gnu++20 -Wall -Wextra -Wpedantic -o CMakeFiles/worldgen.dir/extern/imgui/imgui.cpp.o -c /home/ktavi/dev/worldgen/extern/imgui/imgui.cpp",
   "file": "/home/ktavi/dev/worldgen/extern/imgui/imgui.cpp",
   "output": "/home/ktavi/dev/worldgen/build/CMakeFiles/worldgen.dir/extern/imgui/imgui.cpp.o"
