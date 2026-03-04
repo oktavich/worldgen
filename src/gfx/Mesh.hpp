@@ -23,7 +23,7 @@ struct Mesh {
   Mesh(Mesh&& other) noexcept;
   Mesh& operator=(Mesh&& other) noexcept;
 
-  static Mesh build_shared_grid(int N);
+  static Mesh build_shared_grid(int N, uint8_t skirtMask = 0);
 
   // Build a patch mesh (VertexPN VBO) that reuses the shared grid's IBO/indexCount.
   static Mesh build_patch_pn(const std::vector<VertexPN>& verts, const Mesh& sharedGrid);

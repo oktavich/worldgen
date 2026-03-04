@@ -19,3 +19,6 @@ void merge_node(QuadNode* n);
 void delete_subtree(QuadNode* n);
 
 void collect_leaves(QuadNode* n, std::vector<QuadNode*>& out);
+
+const QuadNode* find_leaf_at(const QuadNode* n, float u, float v);
+QuadNode* find_leaf_at_mut(QuadNode* n, float u, float v);

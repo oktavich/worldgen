@@ -1,11 +1,18 @@
 #include "gfx/Mesh.hpp"
 
-#include <vector>
 #include <glm/glm.hpp>
+#include <vector>
 
-static std::vector<uint32_t> build_grid_indices(int N) {
+namespace {
+
+constexpr uint8_t kEdgeNorth = 1 << 0;
+constexpr uint8_t kEdgeEast  = 1 << 1;
+constexpr uint8_t kEdgeSouth = 1 << 2;
+constexpr uint8_t kEdgeWest  = 1 << 3;
+
+static std::vector<uint32_t> build_grid_indices(int N, uint8_t skirtMask) {
   std::vector<uint32_t> idx;
-  idx.reserve((N - 1) * (N - 1) * 6);
+  idx.reserve(((N - 1) * (N - 1) + (N - 1) * 4) * 6);
 
   auto at = [N](int x, int y) -> uint32_t { return uint32_t(y * N + x); };
 
@@ -21,8 +28,59 @@ static std::vector<uint32_t> build_grid_indices(int N) {
     }
   }
 
+  uint32_t skirtBase = uint32_t(N * N);
+
+  if (skirtMask & kEdgeNorth) {
+    for (int x = 0; x < N - 1; ++x) {
+      uint32_t e0 = at(x, N - 1);
+      uint32_t e1 = at(x + 1, N - 1);
+      uint32_t s0 = skirtBase + uint32_t(x);
+      uint32_t s1 = skirtBase + uint32_t(x + 1);
+      idx.push_back(e0); idx.push_back(s0); idx.push_back(e1);
+      idx.push_back(e1); idx.push_back(s0); idx.push_back(s1);
+    }
+  }
+  skirtBase += uint32_t(N);
+
+  if (skirtMask & kEdgeEast) {
+    for (int y = 0; y < N - 1; ++y) {
+      uint32_t e0 = at(N - 1, y);
+      uint32_t e1 = at(N - 1, y + 1);
+      uint32_t s0 = skirtBase + uint32_t(y);
+      uint32_t s1 = skirtBase + uint32_t(y + 1);
+      idx.push_back(e0); idx.push_back(s0); idx.push_back(e1);
+      idx.push_back(e1); idx.push_back(s0); idx.push_back(s1);
+    }
+  }
+  skirtBase += uint32_t(N);
+
+  if (skirtMask & kEdgeSouth) {
+    for (int x = 0; x < N - 1; ++x) {
+      uint32_t e0 = at(x, 0);
+      uint32_t e1 = at(x + 1, 0);
+      uint32_t s0 = skirtBase + uint32_t(x);
+      uint32_t s1 = skirtBase + uint32_t(x + 1);
+      idx.push_back(e0); idx.push_back(e1); idx.push_back(s0);
+      idx.push_back(e1); idx.push_back(s1); idx.push_back(s0);
+    }
+  }
+  skirtBase += uint32_t(N);
+
+  if (skirtMask & kEdgeWest) {
+    for (int y = 0; y < N - 1; ++y) {
+      uint32_t e0 = at(0, y);
+      uint32_t e1 = at(0, y + 1);
+      uint32_t s0 = skirtBase + uint32_t(y);
+      uint32_t s1 = skirtBase + uint32_t(y + 1);
+      idx.push_back(e0); idx.push_back(e1); idx.push_back(s0);
+      idx.push_back(e1); idx.push_back(s1); idx.push_back(s0);
+    }
+  }
+
   return idx;
 }
+
+} // namespace
 
 Mesh::Mesh(Mesh&& other) noexcept {
   *this = std::move(other);
@@ -49,7 +107,7 @@ Mesh& Mesh::operator=(Mesh&& other) noexcept {
   return *this;
 }
 
-Mesh Mesh::build_shared_grid(int N) {
+Mesh Mesh::build_shared_grid(int N, uint8_t skirtMask) {
   std::vector<glm::vec2> st;
   st.resize(size_t(N) * size_t(N));
 
@@ -61,7 +119,7 @@ Mesh Mesh::build_shared_grid(int N) {
     }
   }
 
-  std::vector<uint32_t> idx = build_grid_indices(N);
+  std::vector<uint32_t> idx = build_grid_indices(N, skirtMask);
 
   Mesh m{};
   m.ownsIbo = true;

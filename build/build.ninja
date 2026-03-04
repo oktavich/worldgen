@@ -159,6 +159,16 @@ build CMakeFiles/worldgen.dir/src/planet/PatchBuilder.cpp.o: CXX_COMPILER__world
   OBJECT_FILE_DIR = CMakeFiles/worldgen.dir/src/planet
   TARGET_SUPPORT_DIR = CMakeFiles/worldgen.dir
 
+build CMakeFiles/worldgen.dir/src/terrain/HeightField.cpp.o: CXX_COMPILER__worldgen_unscanned_Debug /home/ktavi/dev/worldgen/src/terrain/HeightField.cpp || cmake_object_order_depends_target_worldgen
+  CONFIG = Debug
+  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
+  DEP_FILE = CMakeFiles/worldgen.dir/src/terrain/HeightField.cpp.o.d
+  FLAGS = -g -std=gnu++20 -Wall -Wextra -Wpedantic
+  INCLUDES = -I/home/ktavi/dev/worldgen/src -I/home/ktavi/dev/worldgen/extern/glad/include -I/home/ktavi/dev/worldgen/extern/imgui -I/home/ktavi/dev/worldgen/extern/imgui/backends
+  OBJECT_DIR = CMakeFiles/worldgen.dir
+  OBJECT_FILE_DIR = CMakeFiles/worldgen.dir/src/terrain
+  TARGET_SUPPORT_DIR = CMakeFiles/worldgen.dir
+
 build CMakeFiles/worldgen.dir/extern/imgui/imgui.cpp.o: CXX_COMPILER__worldgen_unscanned_Debug /home/ktavi/dev/worldgen/extern/imgui/imgui.cpp || cmake_object_order_depends_target_worldgen
   CONFIG = Debug
   DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
@@ -237,7 +247,7 @@ build CMakeFiles/worldgen.dir/extern/glad/src/gl.c.o: C_COMPILER__worldgen_unsca
 #############################################
 # Link the executable worldgen
 
-build worldgen: CXX_EXECUTABLE_LINKER__worldgen_Debug CMakeFiles/worldgen.dir/src/main.cpp.o CMakeFiles/worldgen.dir/src/gfx/Renderer.cpp.o CMakeFiles/worldgen.dir/src/gfx/Material.cpp.o CMakeFiles/worldgen.dir/src/app/App.cpp.o CMakeFiles/worldgen.dir/src/gfx/Shader.cpp.o CMakeFiles/worldgen.dir/src/gfx/Mesh.cpp.o CMakeFiles/worldgen.dir/src/input/OrbitCamera.cpp.o CMakeFiles/worldgen.dir/src/planet/CubeSphere.cpp.o CMakeFiles/worldgen.dir/src/planet/Quadtree.cpp.o CMakeFiles/worldgen.dir/src/planet/Lod.cpp.o CMakeFiles/worldgen.dir/src/planet/PatchBuilder.cpp.o CMakeFiles/worldgen.dir/extern/imgui/imgui.cpp.o CMakeFiles/worldgen.dir/extern/imgui/imgui_draw.cpp.o CMakeFiles/worldgen.dir/extern/imgui/imgui_tables.cpp.o CMakeFiles/worldgen.dir/extern/imgui/imgui_widgets.cpp.o CMakeFiles/worldgen.dir/extern/imgui/backends/imgui_impl_glfw.cpp.o CMakeFiles/worldgen.dir/extern/imgui/backends/imgui_impl_opengl3.cpp.o CMakeFiles/worldgen.dir/extern/glad/src/gl.c.o | /usr/lib/libglfw.so.3.4 /usr/lib/libGLX.so /usr/lib/libOpenGL.so
+build worldgen: CXX_EXECUTABLE_LINKER__worldgen_Debug CMakeFiles/worldgen.dir/src/main.cpp.o CMakeFiles/worldgen.dir/src/gfx/Renderer.cpp.o CMakeFiles/worldgen.dir/src/gfx/Material.cpp.o CMakeFiles/worldgen.dir/src/app/App.cpp.o CMakeFiles/worldgen.dir/src/gfx/Shader.cpp.o CMakeFiles/worldgen.dir/src/gfx/Mesh.cpp.o CMakeFiles/worldgen.dir/src/input/OrbitCamera.cpp.o CMakeFiles/worldgen.dir/src/planet/CubeSphere.cpp.o CMakeFiles/worldgen.dir/src/planet/Quadtree.cpp.o CMakeFiles/worldgen.dir/src/planet/Lod.cpp.o CMakeFiles/worldgen.dir/src/planet/PatchBuilder.cpp.o CMakeFiles/worldgen.dir/src/terrain/HeightField.cpp.o CMakeFiles/worldgen.dir/extern/imgui/imgui.cpp.o CMakeFiles/worldgen.dir/extern/imgui/imgui_draw.cpp.o CMakeFiles/worldgen.dir/extern/imgui/imgui_tables.cpp.o CMakeFiles/worldgen.dir/extern/imgui/imgui_widgets.cpp.o CMakeFiles/worldgen.dir/extern/imgui/backends/imgui_impl_glfw.cpp.o CMakeFiles/worldgen.dir/extern/imgui/backends/imgui_impl_opengl3.cpp.o CMakeFiles/worldgen.dir/extern/glad/src/gl.c.o | /usr/lib/libglfw.so.3.4 /usr/lib/libGLX.so /usr/lib/libOpenGL.so
   CONFIG = Debug
   DEP_FILE = CMakeFiles/worldgen.dir/link.d
   FLAGS = -g

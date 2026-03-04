@@ -36,3 +36,31 @@ void collect_leaves(QuadNode* n, std::vector<QuadNode*>& out) {
     }
     for (auto* c : n->child) collect_leaves(c, out);
 }
+
+const QuadNode* find_leaf_at(const QuadNode* n, float u, float v) {
+    if (!n) return nullptr;
+    if (n->is_leaf()) return n;
+
+    const float hs = n->size * 0.5f;
+    const float xm = n->x + hs;
+    const float ym = n->y + hs;
+
+    const bool east = (u >= xm);
+    const bool north = (v >= ym);
+    const int childIndex = (north ? 2 : 0) + (east ? 1 : 0);
+    return find_leaf_at(n->child[childIndex], u, v);
+}
+
+QuadNode* find_leaf_at_mut(QuadNode* n, float u, float v) {
+    if (!n) return nullptr;
+    if (n->is_leaf()) return n;
+
+    const float hs = n->size * 0.5f;
+    const float xm = n->x + hs;
+    const float ym = n->y + hs;
+
+    const bool east = (u >= xm);
+    const bool north = (v >= ym);
+    const int childIndex = (north ? 2 : 0) + (east ? 1 : 0);
+    return find_leaf_at_mut(n->child[childIndex], u, v);
+}

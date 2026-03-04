@@ -57,6 +57,7 @@ Crack handling options (pick one):
 Skirts (recommended first): extrude patch edges slightly downward to hide cracks. It’s the classic “works today” solution.
 Stitching: more complex (multiple edge patterns).
 Deliverable: fly from space to ground: patch count changes smoothly, no visible cracks.
+Progress: Localized per-patch LOD refinement, patch cache pruning after merges, edge-aware skirt masks, shared index-buffer variants for skirt combinations, quadtree neighbor lookup, debug counters for cache/skirt edges. Face-boundary skirts currently use a conservative fallback and may still need exact cross-face neighbor mapping later.
 
 4 - Height function: realistic-ish terrain without reinventing noise
 Terrain that feels like a world.
@@ -70,12 +71,14 @@ Domain warp (sparingly) for less “procedural” look
 Important on a sphere:
 Sample noise in 3D (using normalized sphere position) to avoid seams and pole artifacts.
 Deliverable: same planet seed always generates same terrain; change seed changes the world.
+Progress: Added a terrain height pipeline with a dedicated HeightField module, 3D seam-free deterministic noise sampling on normalized sphere positions, patch displacement in PatchBuilder, terrain-aware patch bounds for LOD/visibility, and debug readout for the current terrain height range. FastNoise2 integration is intentionally deferred and can replace the current height backend later. (Fastnoise2 later)
 
 5 - Normals, lighting, and “looks good enough”
 Compute normals from the displaced surface (cross products on the grid or analytic-ish derivative sampling).
 Simple directional light + ambient.
 Add fog (distance-based) to hide LOD transitions and improve atmosphere.
 Deliverable: terrain reads well in motion; mountains/valleys look correct under light.
+Progress: Added displaced-surface normals (including seam-safe border handling), directional lighting with ambient, gray terrain shading with optional multicolor face toggle in ImGui, and live light/LOD tuning controls. Fog is still pending and should be added next. LOD/seam behavior improved but still janky at times (periodic FPS dips and visible transitions), so revisit LOD balancing/stitching/perf in the next pass.
 
 6 - Make it walkable (WASD on a sphere, proper ground alignment)
 Implement “character controller lite” before full physics:
@@ -89,6 +92,7 @@ Given latched position direction dir, height = radius + height(dir)
 Set player position = dir * (height + eye_offset)
 Optional: basic gravity = -up
 Deliverable: you can walk around, the camera stays upright relative to the planet, no “falling off”.
+Progress: Added dual camera modes (space orbit + ground walk), WASD tangent-plane movement on the sphere, per-frame terrain height snapping with smoothing, collision clearance constraints to reduce terrain clipping, sprint/acceleration/damping controls, and runtime ImGui tuning (including eye offset, extra ground camera height up to 3km, and movement/snap parameters). Ground navigation is now usable and stable enough to continue with performance-focused work in step 7.
 
 7 - Performance pass (old hardware friendly)
 This is where you win or lose.

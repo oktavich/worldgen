@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <cmath>
 #include <numbers>
+#include <vector>
 
 #include "planet/CubeSphere.hpp"
 #include "planet/Quadtree.hpp"
@@ -34,42 +35,52 @@ float compute_error_pixels(int face, const QuadNode& n, const glm::vec3& camPos,
     glm::vec3 c = node_center_on_sphere(face, n, p.radius);
 
     float theta = node_theta(n);
-    float patchBound = p.radius * theta * p.boundFactor;
+    float patchBound = p.radius * theta * p.boundFactor + p.maxHeight;
 
-    // Altitude-based distance (stable for space->ground transitions)
-    float camR = glm::length(camPos);
-    float altitude = camR - p.radius;
-    altitude = std::max(altitude, 0.0f);
-
-    // Center-distance variant (useful when far away)
-    float centerDist = glm::length(camPos - c) - patchBound;
-
-    // Blend: near ground rely on altitude; in space rely on centerDist
-    float t = glm::clamp(altitude / (p.radius * 0.25f), 0.0f, 1.0f);
-    float d = glm::mix(altitude, centerDist, t);
-
+    // Use distance to the patch's bounding sphere so refinement stays local
+    // around the camera instead of refining most visible patches uniformly.
+    float d = glm::length(camPos - c) - patchBound;
     d = std::max(d, p.dMin);
 
     float pixelsPerWorldUnit =
         (float(p.viewportH) / (2.0f * std::tan(p.fovY * 0.5f))) / d;
 
     float errorWorld = compute_error_world(n, p);
-    return errorWorld * pixelsPerWorldUnit;
+    float errPx = errorWorld * pixelsPerWorldUnit;
+
+    // Focus detail in a camera-centered spherical ring, independent of cube face.
+    const glm::vec3 focusDir = glm::normalize(camPos);
+    const glm::vec3 patchDir = glm::normalize(c);
+    const float cosA = glm::clamp(glm::dot(focusDir, patchDir), -1.0f, 1.0f);
+    const float surfaceDist = std::acos(cosA) * p.radius;
+
+    float focusT = 1.0f;
+    if (p.focusOuterMeters > p.focusInnerMeters) {
+        focusT = glm::clamp((surfaceDist - p.focusInnerMeters) /
+                            (p.focusOuterMeters - p.focusInnerMeters), 0.0f, 1.0f);
+    } else {
+        focusT = (surfaceDist > p.focusOuterMeters) ? 1.0f : 0.0f;
+    }
+    const float focusScale = glm::mix(1.0f, p.focusOutsideScale, focusT);
+    return errPx * focusScale;
 }
 
-static void refine_or_merge(int face, QuadNode* n, const glm::vec3& camPos, const LodParams& p) {
+static void collect_ops_rec(int face, QuadNode* n, const glm::vec3& camPos, const LodParams& p,
+                            std::vector<LodOp>& outOps) {
     if (!n) return;
 
     glm::vec3 center = node_center_on_sphere(face, *n, p.radius);
 
     float theta = node_theta(*n);
-    float patchBound = p.radius * theta * p.boundFactor;
+    float patchBound = p.radius * theta * p.boundFactor + p.maxHeight;
 
     const bool visible = is_patch_visible_from_camera(camPos, center, p.radius, patchBound);
 
-    // Beyond horizon: never split, aggressively collapse
+    // Beyond horizon: merge if possible, never split.
     if (!visible) {
-        if (!n->is_leaf()) merge_node(n);
+        if (!n->is_leaf()) {
+            outOps.push_back(LodOp{n, false, 1000.0f + float(n->level)});
+        }
         return;
     }
 
@@ -77,19 +88,22 @@ static void refine_or_merge(int face, QuadNode* n, const glm::vec3& camPos, cons
 
     if (n->is_leaf()) {
         if (n->level < p.maxLevel && errPx > p.targetPixels) {
-            split_node(n);
+            const float splitPriority = errPx / p.targetPixels;
+            outOps.push_back(LodOp{n, true, splitPriority});
         }
         return;
     }
 
     if (errPx < p.targetPixels * p.mergeFactor) {
-        merge_node(n);
+        const float margin = (p.targetPixels * p.mergeFactor) - errPx;
+        outOps.push_back(LodOp{n, false, margin});
         return;
     }
 
-    for (auto* c : n->child) refine_or_merge(face, c, camPos, p);
+    for (auto* c : n->child) collect_ops_rec(face, c, camPos, p, outOps);
 }
 
-void update_lod(int face, QuadNode* n, const glm::vec3& camPos, const LodParams& p) {
-    refine_or_merge(face, n, camPos, p);
+void collect_lod_ops(int face, QuadNode* n, const glm::vec3& camPos, const LodParams& p,
+                     std::vector<LodOp>& outOps) {
+    collect_ops_rec(face, n, camPos, p, outOps);
 }

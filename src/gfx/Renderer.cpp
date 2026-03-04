@@ -37,6 +37,9 @@ void Renderer::draw(const Mesh& mesh, const Material& mat) {
 
     // Always used
     if (mat.loc.uColor  != -1) glUniform3fv(mat.loc.uColor, 1, glm::value_ptr(mat.color));
+    if (mat.loc.uLightDir != -1) glUniform3fv(mat.loc.uLightDir, 1, glm::value_ptr(mat.lightDir));
+    if (mat.loc.uAmbient != -1) glUniform1f(mat.loc.uAmbient, mat.ambient);
+    if (mat.loc.uDiffuseStrength != -1) glUniform1f(mat.loc.uDiffuseStrength, mat.diffuseStrength);
 
     glBindVertexArray(mesh.vao);
     glDrawElements(GL_TRIANGLES, mesh.indexCount, GL_UNSIGNED_INT, (void*)0);

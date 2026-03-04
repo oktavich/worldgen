@@ -27,6 +27,7 @@ add_executable(worldgen
   src/planet/Quadtree.cpp
   src/planet/Lod.cpp
   src/planet/PatchBuilder.cpp
+  src/terrain/HeightField.cpp
 
   ${IMGUI_SOURCES}
 

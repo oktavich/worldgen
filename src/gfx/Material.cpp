@@ -10,4 +10,7 @@ void Material::cache_uniforms() {
     loc.uNode   = shader->uniform_location("uNode");
     loc.uRadius = shader->uniform_location("uRadius");
     loc.uColor  = shader->uniform_location("uColor");
+    loc.uLightDir = shader->uniform_location("uLightDir");
+    loc.uAmbient = shader->uniform_location("uAmbient");
+    loc.uDiffuseStrength = shader->uniform_location("uDiffuseStrength");
 }
